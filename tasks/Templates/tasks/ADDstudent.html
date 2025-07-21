@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <link rel="stylesheet" href="{% static 'tasks/styles.css' %}">
+
+</head>
+<body>
+    
+    <form id="student-form" method="POST" action="{% url 'studentpost' %}">
+    {% csrf_token %}
+    <center><h2>Add New Student</h2></center>
+    <input type="text" name="Name" placeholder="Enter Name" required>
+    <input type="text" name="department" placeholder="Enter Department" required>
+    <input type="text" name="phoneNumber" placeholder="Enter Phone Number" required>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

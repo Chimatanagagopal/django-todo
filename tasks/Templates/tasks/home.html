@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do Dashboard</title>
+      <link rel="stylesheet" href="{% static 'tasks/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <p>Login Successful</p>
+        <h1>To-Do List</h1>
+        <hr>
+        <table>
+            <tr>
+                <th>Stud_Id</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Phone Number</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for student in students%}
+            <tr>
+                <td>{{student.id}}</td>
+                <td>{{student.Name}}</td>
+                <td>{{student.department}}</td>
+                <td>{{student.phoneNumber}}</td>
+<td><a href="{% url 'updatestudent' student.id %}" class="create-edit">Edit</a></td>
+<td><a href="{% url 'studeDelete' student.id%}" class="create-delete">Delete</a></td>
+
+            </tr>
+            {%endfor%}
+
+        </table>
+
+        <form method="POST" action="{% url 'logout' %}" class="logout-btn">
+            {% csrf_token %}
+            <input type="submit" value="Logout">
+        </form>
+<a href="{% url 'add_student' %}" class="create-btn">Add Student</a>
+
+   </div> 
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student</title>
+  <link rel="stylesheet" href="{% static 'tasks/styles.css' %}">
+</head>
+<body>
+    
+   <form method="POST" action="{% url 'studentput' student.id %}">
+
+        {% csrf_token %}
+        <center><h2>Update Student</h2></center>
+
+        <input type="text" name="Name" placeholder="Enter Name" value="{{ student.Name }}" required>
+        <input type="text" name="department" placeholder="Enter Department" value="{{ student.department }}" required>
+        <input type="text" name="phoneNumber" placeholder="Enter Phone Number" value="{{ student.phoneNumber }}" required>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
